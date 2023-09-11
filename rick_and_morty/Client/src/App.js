@@ -24,31 +24,69 @@ function App() {
   const dispatch = useDispatch();
   const location = useLocation();
 
-  const onSearch = (id) => {
-    axios(`http://localhost:3001/rickandmorty/character/${id}`)
-      .then(({ data }) => {
-        if (!characters.find((char) => char.id === data.id)) {
-          if (data.name) {
-            setCharacters((oldChars) => [...oldChars, data]);
-          }
-        } else {
-          window.alert("Ya existe personaje con ese ID");
+  const onSearch = async (id) => {
+    try {
+      const { data } = await axios(
+        `http://localhost:3001/rickandmorty/character/${id}`
+      );
+
+      if (!characters.find((char) => char.id === data.id)) {
+        if (data.name) {
+          setCharacters((oldChars) => [...oldChars, data]);
         }
-      })
-      .catch(() => window.alert("Personaje no encontrado"));
+      } else {
+        window.alert("Ya existe personaje con ese ID");
+      }
+    } catch (error) {
+      window.alert("Personaje no encontrado");
+    }
   };
+
+  // CON EXPRESS
+  // const onSearch = (id) => {
+  //   axios(`http://localhost:3001/rickandmorty/character/${id}`)
+  //     .then(({ data }) => {
+  //       if (!characters.find((char) => char.id === data.id)) {
+  //         if (data.name) {
+  //           setCharacters((oldChars) => [...oldChars, data]);
+  //         }
+  //       } else {
+  //         window.alert("Ya existe personaje con ese ID");
+  //       }
+  //     })
+  //     .catch(() => window.alert("Personaje no encontrado"));
+  // };
 
   // buscar dotenv para guardar constantes
 
-  const login = (userData) => {
-    const { email, password } = userData;
-    const URL = "http://localhost:3001/rickandmorty/login/";
-    axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+  const login = async (userData) => {
+    try {
+      const { email, password } = userData;
+      const URL = "http://localhost:3001/rickandmorty/login/";
+      const { data } = await axios(
+        URL + `?email=${email}&password=${password}`
+      );
+
       const { access } = data;
-      setAccess(access);
+      setAccess(data);
       access && navigate("/home");
-    });
+    } catch (error) {
+      window.alert("Datos Incorrectos");
+    }
   };
+
+  //ESTO NO FUNCIONA
+
+  // CON EXPRESS
+  // const login = (userData) => {
+  //   const { email, password } = userData;
+  //   const URL = "http://localhost:3001/rickandmorty/login/";
+  //   axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+  //     const { access } = data;
+  //     setAccess(access);
+  //     access && navigate("/home");
+  //   });
+  // };
 
   // setAccess(access)????
 

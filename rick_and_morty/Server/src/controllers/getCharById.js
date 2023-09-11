@@ -1,23 +1,39 @@
 const URL = "https://rickandmortyapi.com/api/character/";
 const axios = require("axios");
 
-const getCharById = (req, res) => {
-  const { id } = req.params;
-  axios(`${URL}${id}`)
-    .then(({ data }) => {
-      const { id, name, status, species, origin, image, gender } = data;
-      const character = { id, name, status, species, origin, image, gender };
+const getCharById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await axios.get(`${URL}${id}`);
+    const { name, status, species, origin, image, gender } = result.data;
+    const character = { id, name, status, species, origin, image, gender };
 
-      if (character.name) {
-        res.status(200).json(character);
-      } else {
-        res.status(404).json({ message: error });
-      }
-    })
-    .catch((error) => {
-      res.status(500).send(error.message);
-    });
+    if (character.name) {
+      res.status(200).json(character);
+    }
+  } catch (error) {
+    res.status(404).json({ message: error });
+  }
 };
+
+// CON EXPRESS
+// const getCharById = (req, res) => {
+//   const { id } = req.params;
+//   axios(`${URL}${id}`)
+//     .then(({ data }) => {
+//       const { id, name, status, species, origin, image, gender } = data;
+//       const character = { id, name, status, species, origin, image, gender };
+
+//       if (character.name) {
+//         res.status(200).json(character);
+//       } else {
+//         res.status(404).json({ message: error });
+//       }
+//     })
+//     .catch((error) => {
+//       res.status(500).send(error.message);
+//     });
+// };
 
 module.exports = getCharById;
 // SIN EXPRESS
