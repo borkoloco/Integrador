@@ -17,6 +17,8 @@ export const addFav = (character) => {
   };
 };
 
+// el async va en el axios...no en cualquier lado
+
 //VER PORQUE VA EN DISPATCH LA ASYNC
 
 // CON EXPRESS
@@ -56,6 +58,8 @@ export const removeFav = (id) => {
     }
   };
 };
+
+// podemos loguear error directo....no hacer res. obvio ya que no es back-...puede ser log o alert
 
 // CON EXPRESS
 // export const removeFav = (id) => {

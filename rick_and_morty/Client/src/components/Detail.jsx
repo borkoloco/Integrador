@@ -31,6 +31,8 @@ function Detail() {
     return setCharacter({});
   }, [id]);
 
+  //aca ni modificamos con async await porque es mas efectivo promesa
+
   const playSlideSound = () => {
     const audio = new Audio(slideSound);
     audio.play();

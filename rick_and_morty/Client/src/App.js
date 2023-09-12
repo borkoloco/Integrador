@@ -75,6 +75,8 @@ function App() {
     }
   };
 
+  //res.status(500).json({error:error.message})???
+
   //ESTO NO FUNCIONA
 
   // CON EXPRESS
