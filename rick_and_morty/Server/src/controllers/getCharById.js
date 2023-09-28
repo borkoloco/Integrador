@@ -5,8 +5,30 @@ const getCharById = async (req, res) => {
   try {
     const { id } = req.params;
     const result = await axios.get(`${URL}${id}`);
-    const { name, status, species, origin, image, gender } = result.data;
-    const character = { id, name, status, species, origin, image, gender };
+    console.log(result);
+    const {
+      name,
+      status,
+      species,
+      origin = origin?.name,
+      location = location?.name,
+      image,
+      gender,
+      created,
+      episode = episode?.length,
+    } = result.data;
+    const character = {
+      id,
+      name,
+      status,
+      species,
+      origin,
+      location,
+      episode,
+      image,
+      created,
+      gender,
+    };
 
     if (character.name) {
       res.status(200).json(character);
@@ -15,6 +37,8 @@ const getCharById = async (req, res) => {
     res.status(404).json({ message: error });
   }
 };
+
+// aca agregue location.name y origin.name y created
 
 // CON EXPRESS
 // const getCharById = (req, res) => {

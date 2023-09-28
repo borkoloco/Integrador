@@ -1,10 +1,33 @@
 const PORT = 3001;
 const server = require("./app");
+const { conn } = require("./DB_connection");
 
-server.listen(PORT, () => {
-  console.log("Server raised in port: " + PORT);
-});
+conn
+  .sync({ force: false, alter: true })
+  .then(() => {
+    server.listen(PORT, () => {
+      console.log("Server raised on port: " + PORT);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
+// force: true/false para que se limpie la bd al reiniciar
+// alter: true/false para poder alterar datos pequenios
+
+// PRE DATABASE
+// const PORT = 3001;
+// const server = require("./app");
+
+// server.listen(PORT, () => {
+//   console.log("Server raised in port: " + PORT);
+// });
+//y agregue archivo .env con sus dependencias dotenv
+//-  **sequelize**
+// -  **pg**
+// -  **dotenv**
+// //
 //PRE TESTING
 // const express = require("express");
 // const server = express();

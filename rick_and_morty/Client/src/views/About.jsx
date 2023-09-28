@@ -8,7 +8,7 @@ import {
   Card,
   Container,
   AboutDiv,
-} from "./AboutStyles";
+} from "../css/AboutStyles";
 
 export default function About(props) {
   return (

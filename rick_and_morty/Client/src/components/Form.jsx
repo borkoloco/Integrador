@@ -9,8 +9,8 @@ import {
   Stbtn,
   Span,
   Pe,
-} from "./FormStyles";
-import clickSound from "../click2.wav";
+} from "../css/FormStyles";
+import clickSound from "../assets/click2.wav";
 
 function Form({ login }) {
   const [userData, setUserData] = useState({

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import clickSound from "../click.wav";
+import clickSound from "../assets/click.wav";
 
 const Input = styled.input`
   margin-top: 20px;

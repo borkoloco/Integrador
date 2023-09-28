@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import Nav from "./components/Nav";
-import Cards from "./components/Cards.jsx";
+import Cards from "./views/Cards.jsx";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
-import About from "./components/About";
-import Detail from "./components/Detail";
+import About from "./views/About";
+import Detail from "./views/Detail";
 import Form from "./components/Form";
 import axios from "axios";
-import Error from "./components/Error";
-import Favorites from "./components/Favorites";
+import Error from "./views/Error";
+import Favorites from "./views/Favorites";
 import { useDispatch } from "react-redux";
 import { removeFav } from "./redux/actions";
-import clickSound from "./click2.wav";
-import clickSound4 from "./click4.wav";
+import clickSound from "./assets/click2.wav";
+import clickSound4 from "./assets/click4.wav";
 
 function App() {
   const [characters, setCharacters] = useState([]);

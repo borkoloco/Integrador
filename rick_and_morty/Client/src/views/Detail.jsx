@@ -11,8 +11,8 @@ import {
   Info,
   H2,
   Li,
-} from "./DetailStyles";
-import slideSound from "../slide.mp3";
+} from "../css/DetailStyles";
+import slideSound from "../assets/slide.mp3";
 
 function Detail() {
   const { id } = useParams();
@@ -28,6 +28,7 @@ function Detail() {
     });
     return setCharacter({});
   }, [id]);
+  console.log(character);
 
   //aca ni modificamos con async await porque es mas efectivo promesa
 

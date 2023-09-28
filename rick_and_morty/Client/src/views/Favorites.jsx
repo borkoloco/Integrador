@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { filterCards, orderCards, resetCards } from "../redux/actions";
-import Card from "./Card";
+import Card from "../components/Card";
 import {
   SelectDiv,
   Select,
@@ -11,8 +11,8 @@ import {
   Div2,
   Button,
   Video,
-} from "./FavoritesStyles";
-import clickSound from "../click.wav";
+} from "../css/FavoritesStyles";
+import clickSound from "../assets/click.wav";
 
 const Favorites = () => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const Favorites = () => {
   return (
     <>
       <Video loop autoPlay muted>
-        <source src={require("../video.mp4")} type="video/mp4" />
+        <source src={require("../assets/video.mp4")} type="video/mp4" />
       </Video>
       <Div>
         <Div1>

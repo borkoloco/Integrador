@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
 import { NavLink } from "react-router-dom";
-import clickSound from "../click3.wav";
+import clickSound from "../assets/click3.wav";
 
 const DivNav = styled.div`
   justify-content: space-around;
